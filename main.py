@@ -7,11 +7,22 @@ def encoder(password):
         else:
             encoded_password_list.append(number + 3)
     encoded_password = "".join(str(num) for num in encoded_password_list)
-
     return encoded_password
 
-    # encodes password by shifting all digits up by three
-def main():
+
+def decode(encoded_password):
+    password = ''
+    for digit in encoded_password:
+        new_digit = int(digit) - 3
+        if new_digit < 0:
+            new_digit += 10
+        password += str(new_digit)
+    return password
+
+
+def main():  # encodes password by shifting all digits up by three
+    password = 'none'
+    encoded_password = 'none'
     while True:
         print("Menu")
         print("-------------")
@@ -23,11 +34,13 @@ def main():
 
         if option == 1:
             password = int(input("Please enter your password to encode: "))
-            password = encoder(str(password))
+            encoded_password = encoder(str(password))
             print("Your password has been encoded and stored!\n")
         elif option == 2:
-            # FIXME: Add decoder option.
-            raise NotImplementedError
+            if encoded_password != 'none':
+                password = decode(str(encoded_password))
+            print(f'The encoded password is {encoded_password}, and the original password is {password}.')
+            print()
         elif option == 3:
             break
         else:
