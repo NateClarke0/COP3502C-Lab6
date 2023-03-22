@@ -10,6 +10,8 @@ def encoder(password):
 
     return encoded_password
 
+    # encodes password by shifting all digits up by three
+
 def menu():
     print("Menu")
     print("-------------")
