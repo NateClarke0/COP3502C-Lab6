@@ -1,3 +1,4 @@
+# Nathaniel Austin-Clarke
 def encoder(password):
     encoded_password_list = []
     for number in password:
@@ -23,11 +24,14 @@ def main():
 
         if option == 1:
             password = int(input("Please enter your password to encode: "))
-            password = encoder(str(password))
+            encoded_password = encoder(str(password))
             print("Your password has been encoded and stored!\n")
         elif option == 2:
-            # FIXME: Add decoder option.
-            raise NotImplementedError
+            try:
+                print(f"The encoded password is {encoded_password}, and the original password is {password}.")
+            except UnboundLocalError:
+                print("Please enter a password to encode.\n")
+                continue
         elif option == 3:
             break
         else:
