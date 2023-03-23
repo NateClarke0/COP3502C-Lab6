@@ -1,3 +1,4 @@
+# Nathaniel Austin-Clarke
 def encoder(password):
     encoded_password_list = []
     for number in password:
@@ -21,8 +22,6 @@ def decode(encoded_password):
 
 
 def main():  # encodes password by shifting all digits up by three
-    password = 'none'
-    encoded_password = 'none'
     while True:
         print("Menu")
         print("-------------")
@@ -37,10 +36,12 @@ def main():  # encodes password by shifting all digits up by three
             encoded_password = encoder(str(password))
             print("Your password has been encoded and stored!\n")
         elif option == 2:
-            if encoded_password != 'none':
+            try:
                 password = decode(str(encoded_password))
-            print(f'The encoded password is {encoded_password}, and the original password is {password}.')
-            print()
+                print(f"The encoded password is {encoded_password}, and the original password is {password}.")
+            except UnboundLocalError:
+                print("Please enter a password to encode.\n")
+                continue
         elif option == 3:
             break
         else:
